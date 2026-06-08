@@ -74,7 +74,20 @@ Benchmarking, Field Research, and Outputs intentionally have NO template (data u
 - Cards use a hard offset shadow on hover (`box-shadow:5px 5px 0`), 2px borders, rounded corners.
 - Mobile responsive: <768px hides sidebar → horizontal pill nav, cards single-column, modals slide up from bottom.
 
-## NEXT FEATURE TO BUILD — Project Tracker (Gantt + Kanban)
+## Project Tracker (Gantt + Kanban) — BUILT
+
+Status: implemented as an 8th section inside `index.html` (id `sec-tracker`, accent `#0E7490`,
+phase label "Manage"). Front end is pre-rendered static HTML; JS renders the bars and cards from
+data. It reads and writes shared data through a Cloudflare D1 database via Pages Functions in
+`/functions`. If the API is unreachable the page still opens fully populated from an embedded seed
+(identical to `seed.sql`) and shows a "Local only" badge. See `TRACKER_DEPLOY.md` for the D1 setup,
+bindings, and deploy steps. New files: `functions/api/tasks.js`, `functions/api/tasks/[id].js`,
+`functions/_lib.js`, `schema.sql`, `seed.sql`, `wrangler.toml`.
+
+Working day maths matches the Excel: `planEnd = WORKDAY(planStart, mandays - 1)` skipping weekends
+and the 29 non-working dates from the MY Holidays sheet (verified against all 37 tasks).
+
+Original requirements (kept for reference):
 
 The client wants a project tracker page, opened from the playbook, with TWO views of the same data:
 

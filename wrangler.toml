@@ -1,0 +1,15 @@
+# Cloudflare Pages config for uxappaudit (playbook + Project Tracker API)
+# The static site is index.html at the repo root. The /functions folder is
+# deployed automatically as Pages Functions (the tracker API at /api/tasks).
+
+name = "uxappaudit"
+compatibility_date = "2024-09-29"
+pages_build_output_dir = "."
+
+# D1 binding used by functions/api/tasks*.js  (env.DB)
+# Create the database, then paste its id below:
+#   wrangler d1 create uxappaudit-tracker
+[[d1_databases]]
+binding = "DB"
+database_name = "uxappaudit-tracker"
+database_id = "REPLACE_WITH_DATABASE_ID"

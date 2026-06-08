@@ -289,6 +289,95 @@ button:focus:not(:focus-visible){outline:none}
 }
 .mobile-nav{display:none}
 
+/* ════ PROJECT TRACKER ════ */
+:root{--track:#0E7490;--track-l:#D6EEF5}
+.trk-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 40px 18px}
+.trk-toggle{display:inline-flex;background:#fff;border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.trk-toggle button{background:#fff;border:none;font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--muted);padding:10px 20px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:7px}
+.trk-toggle button.active{background:var(--track);color:#fff}
+.trk-toggle button:not(.active):hover{background:var(--track-l);color:var(--track)}
+.trk-conn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:7px 13px;border-radius:30px;border:1px solid var(--border)}
+.trk-conn .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.trk-conn.live{background:#D1F5DF;color:#0F6B2F;border-color:#0F6B2F33}
+.trk-conn.live .dot{background:#0F6B2F}
+.trk-conn.local{background:#FEF3DC;color:#9E5F00;border-color:#9E5F0033}
+.trk-conn.local .dot{background:#D4920A}
+.trk-spacer{flex:1}
+.trk-add-btn{display:inline-flex;align-items:center;gap:8px;background:var(--track);color:#fff;font-family:Arial,sans-serif;font-size:13px;font-weight:700;border:none;border-radius:8px;padding:11px 20px;cursor:pointer;min-height:44px;transition:background .15s}
+.trk-add-btn:hover{background:#0b5c73}
+.trk-view{margin:0 40px 20px}
+.trk-view.hidden{display:none}
+.trk-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 40px 14px}
+.trk-legend span{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.trk-legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
+
+/* Gantt */
+.gantt-scroll{overflow-x:auto;border:2px solid var(--ink);border-radius:12px;background:#fff;-webkit-overflow-scrolling:touch}
+.gantt-inner{position:relative;font-size:12px}
+.gantt-header{display:flex;position:sticky;top:0;z-index:5;background:#F5F1EA;border-bottom:2px solid var(--ink)}
+.gantt-corner{position:sticky;left:0;z-index:6;background:#F5F1EA;border-right:2px solid var(--ink);flex-shrink:0;display:flex;align-items:center;padding:0 14px;font-weight:700;color:var(--track);letter-spacing:.04em}
+.gantt-ticks{position:relative;flex-shrink:0;height:38px}
+.gantt-tick{position:absolute;top:0;height:100%;border-left:1px solid var(--border);padding:5px 0 0 5px;font-size:10px;color:var(--muted);white-space:nowrap;font-weight:700}
+.gantt-tick.month{border-left:2px solid #B0A89A;color:var(--ink)}
+.gantt-grp-row{display:flex;background:var(--track-l);border-bottom:1px solid var(--border)}
+.gantt-grp-label{position:sticky;left:0;z-index:4;background:var(--track-l);border-right:2px solid var(--ink);flex-shrink:0;padding:7px 14px;font-weight:700;color:var(--track);text-transform:uppercase;font-size:10px;letter-spacing:.08em}
+.gantt-grp-track{flex-shrink:0}
+.gantt-row{display:flex;border-bottom:1px solid #EFEAE0}
+.gantt-row:hover{background:#FBF8F2}
+.gantt-label{position:sticky;left:0;z-index:4;background:#fff;border-right:2px solid var(--ink);flex-shrink:0;padding:7px 14px;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.gantt-row:hover .gantt-label{background:#FBF8F2}
+.gantt-label b{font-weight:700;color:var(--ink);line-height:1.3;font-size:12px}
+.gantt-label small{color:var(--muted);font-size:10px}
+.gantt-track{position:relative;flex-shrink:0;height:42px}
+.gantt-bar{position:absolute;top:8px;height:26px;border-radius:6px;display:flex;align-items:center;padding:0 8px;cursor:pointer;color:#fff;font-size:10px;font-weight:700;white-space:nowrap;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.18);border:1px solid rgba(0,0,0,.15)}
+.gantt-bar:hover{filter:brightness(1.06);outline:2px solid var(--ink);z-index:3}
+.gantt-bar .fill{position:absolute;left:0;top:0;bottom:0;background:rgba(255,255,255,.28);border-right:1px solid rgba(255,255,255,.5)}
+.gantt-bar span{position:relative;z-index:1}
+.gantt-today{position:absolute;top:0;bottom:0;width:2px;background:#B83010;z-index:5;pointer-events:none}
+.gantt-today::before{content:"TODAY";position:absolute;top:2px;left:3px;font-size:9px;font-weight:700;color:#B83010;background:#fff;padding:1px 4px;border-radius:3px;border:1px solid #B8301055}
+.gantt-tip{position:fixed;z-index:700;max-width:280px;background:var(--ink);color:#fff;border-radius:9px;padding:11px 13px;font-size:12px;line-height:1.55;box-shadow:0 8px 28px rgba(0,0,0,.32);pointer-events:none;opacity:0;transition:opacity .12s}
+.gantt-tip.show{opacity:1}
+.gantt-tip b{color:#F5A08A}
+.gantt-tip .row{display:flex;gap:6px;margin-top:3px;color:rgba(255,255,255,.85)}
+.gantt-tip .row em{color:rgba(255,255,255,.55);font-style:normal;min-width:78px;flex-shrink:0}
+
+/* Kanban */
+.kanban{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.kan-col{flex:0 0 268px;background:#F5F1EA;border:2px solid var(--ink);border-radius:12px;display:flex;flex-direction:column;max-height:640px}
+.kan-col-hd{padding:12px 14px;border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;border-radius:9px 9px 0 0;font-weight:700;font-size:13px;color:#fff}
+.kan-col-hd .count{background:rgba(255,255,255,.28);border-radius:20px;padding:1px 9px;font-size:11px}
+.kan-list{padding:10px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1;min-height:60px}
+.kan-list.drag-over{background:var(--track-l);outline:2px dashed var(--track);outline-offset:-6px;border-radius:8px}
+.kan-card{background:#fff;border:2px solid var(--ink);border-radius:9px;padding:11px 12px;cursor:grab;box-shadow:3px 3px 0 rgba(26,22,18,.08);transition:box-shadow .12s,transform .12s}
+.kan-card:hover{box-shadow:5px 5px 0 rgba(26,22,18,.13);transform:translate(-1px,-1px)}
+.kan-card.dragging{opacity:.45;cursor:grabbing}
+.kan-card .ws{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:7px}
+.kan-card .ttl{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:8px}
+.kan-card .meta{display:flex;flex-wrap:wrap;gap:5px 10px;font-size:11px;color:var(--muted)}
+.kan-card .meta b{color:var(--ink2);font-weight:700}
+.kan-card .pcbar{height:5px;background:#EFEAE0;border-radius:4px;margin-top:9px;overflow:hidden}
+.kan-card .pcbar i{display:block;height:100%;border-radius:4px}
+
+/* Add form modal */
+.trk-form{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.trk-form .full{grid-column:1/-1}
+.trk-field{display:flex;flex-direction:column;gap:5px}
+.trk-field label{font-size:11px;font-weight:700;color:var(--track);letter-spacing:.04em;text-transform:uppercase}
+.trk-field input,.trk-field select,.trk-field textarea{font-family:Arial,sans-serif;font-size:14px;color:var(--ink);background:#fff;border:2px solid var(--border);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .15s}
+.trk-field input:focus,.trk-field select:focus,.trk-field textarea:focus{border-color:var(--track)}
+.trk-field textarea{resize:vertical;min-height:62px}
+.trk-form-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;margin-top:4px}
+.trk-form-actions button{font-family:Arial,sans-serif;font-size:14px;font-weight:700;border-radius:8px;padding:11px 22px;cursor:pointer;min-height:44px}
+.trk-cancel{background:#fff;color:var(--ink);border:2px solid var(--border)}
+.trk-save{background:var(--track);color:#fff;border:none}
+.trk-save:hover{background:#0b5c73}
+
+@media (max-width:768px){
+  .trk-toolbar,.trk-view,.trk-legend{margin-left:16px;margin-right:16px}
+  .trk-form{grid-template-columns:1fr}
+  .gantt-corner,.gantt-label,.gantt-grp-label{font-size:11px}
+}
+
 </style>
 </head>
 <body>
@@ -353,6 +442,11 @@ button:focus:not(:focus-visible){outline:none}
   <span class="nav-icon">&#128203;</span>
   <span class="nav-text">Research Outputs</span>
 </button>
+    <div class="phase-lbl" style="color:#0E7490">Manage</div>
+<button class="nav-btn" data-group="tracker" onclick="scrollToSection('tracker')" aria-label="Go to Project Tracker">
+  <span class="nav-icon">&#128467;</span>
+  <span class="nav-text">Project Tracker</span>
+</button>
   </nav>
   <!-- Mobile nav -->
   <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Section navigation mobile">
@@ -363,6 +457,7 @@ button:focus:not(:focus-visible){outline:none}
     <button class="mobile-nav-btn" data-group="benchmark" onclick="scrollToSection('benchmark')" style="--mob-color:#163060"><span>&#127942;</span><span>Competitive Benchmarking</span></button>
     <button class="mobile-nav-btn" data-group="usability" onclick="scrollToSection('usability')" style="--mob-color:#0A6B66"><span>&#129514;</span><span>Usability Testing</span></button>
     <button class="mobile-nav-btn" data-group="outputs" onclick="scrollToSection('outputs')" style="--mob-color:#344054"><span>&#128203;</span><span>Research Outputs</span></button>
+    <button class="mobile-nav-btn" data-group="tracker" onclick="scrollToSection('tracker')" style="--mob-color:#0E7490"><span>&#128467;</span><span>Project Tracker</span></button>
   </div>
   <div class="main-content">
     <div class="sr-panel" id="sr-panel">
@@ -895,8 +990,97 @@ button:focus:not(:focus-visible){outline:none}
   </div>
 </button></div></div>
   </div>
-  
+
 </section>
+<section class="group-section" id="sec-tracker" aria-labelledby="sec-name-tracker">
+  <div class="sec-header" style="background:linear-gradient(135deg,#0E749010,#0E749002)">
+    <div class="sec-icon" style="background:#D6EEF5;border:2px solid #0E749033">&#128467;</div>
+    <div class="sec-meta">
+      <span class="phase-pill" style="background:#D6EEF5;color:#0E7490">&#128467; Manage</span>
+      <div class="sec-name" id="sec-name-tracker" style="color:#0E7490">Project Tracker</div>
+      <div class="sec-tagline">The live plan for this audit, 37 deliverables across 9 workstreams, shown two ways. Use the Gantt timeline to see what runs when, and the Kanban board to move work across statuses. Shared across the team, everyone with access sees the same live data.</div>
+    </div>
+  </div>
+
+  <div class="trk-toolbar">
+    <div class="trk-toggle" role="tablist" aria-label="Tracker view">
+      <button id="trk-tab-gantt" class="active" role="tab" aria-selected="true" onclick="trkSetView('gantt')">&#128202; Gantt</button>
+      <button id="trk-tab-kanban" role="tab" aria-selected="false" onclick="trkSetView('kanban')">&#128203; Kanban</button>
+    </div>
+    <span id="trk-conn" class="trk-conn local"><span class="dot"></span><span id="trk-conn-txt">Connecting...</span></span>
+    <span class="trk-spacer"></span>
+    <button class="trk-add-btn" onclick="trkOpenForm()">&#10133; Add deliverable</button>
+  </div>
+
+  <div class="trk-legend" id="trk-legend" aria-hidden="true"></div>
+
+  <div class="trk-view" id="gantt-view">
+    <div class="gantt-scroll"><div class="gantt-inner" id="gantt-inner"></div></div>
+  </div>
+  <div class="trk-view hidden" id="kanban-view">
+    <div class="kanban" id="kanban-board"></div>
+  </div>
+</section>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="trk-form-overlay" role="dialog" aria-modal="true" aria-labelledby="trk-form-title">
+  <div class="modal" style="max-width:600px">
+    <div class="m-stripe" style="background:#0E7490"></div>
+    <div class="m-title-row">
+      <div>
+        <span class="m-cat" style="background:#D6EEF5;color:#0E7490">Project Tracker</span>
+        <h2 class="m-term" id="trk-form-title">Add deliverable</h2>
+      </div>
+      <button class="m-close" onclick="trkCloseForm()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="m-body" style="padding:20px 24px 24px">
+      <form id="trk-form" class="trk-form" onsubmit="trkSubmitForm(event)">
+        <div class="trk-field full">
+          <label for="f-task">Deliverable name</label>
+          <input id="f-task" type="text" required placeholder="e.g. Draft accessibility issue log">
+        </div>
+        <div class="trk-field">
+          <label for="f-workstream">Workstream</label>
+          <input id="f-workstream" list="f-workstream-list" required placeholder="Pick or type new">
+          <datalist id="f-workstream-list"></datalist>
+        </div>
+        <div class="trk-field">
+          <label for="f-owner">Owner (PIC)</label>
+          <input id="f-owner" type="text" required placeholder="e.g. UXR Ast">
+        </div>
+        <div class="trk-field">
+          <label for="f-start">Start date</label>
+          <input id="f-start" type="date" required>
+        </div>
+        <div class="trk-field">
+          <label for="f-mandays">Mandays</label>
+          <input id="f-mandays" type="number" min="1" step="1" required value="1">
+        </div>
+        <div class="trk-field">
+          <label for="f-dependency">Dependency (task number, optional)</label>
+          <input id="f-dependency" type="number" min="1" step="1" placeholder="e.g. 17">
+        </div>
+        <div class="trk-field">
+          <label for="f-status">Status</label>
+          <select id="f-status">
+            <option>Not Started</option>
+            <option>In Progress</option>
+            <option>Delayed</option>
+            <option>Completed Early</option>
+            <option>Completed</option>
+          </select>
+        </div>
+        <div class="trk-field full">
+          <label for="f-notes">Remarks / blockers (optional)</label>
+          <textarea id="f-notes" placeholder="Anything the team should know"></textarea>
+        </div>
+        <div class="trk-form-actions">
+          <button type="button" class="trk-cancel" onclick="trkCloseForm()">Cancel</button>
+          <button type="submit" class="trk-save">Add to tracker</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -1772,9 +1956,333 @@ function openAnalyticsTemplate() {
 }
 
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { closeModal(); closeQuiz(); }
+  if (e.key === 'Escape') { closeModal(); closeQuiz(); trkCloseForm(); }
 });
 
+</script>
+
+<script>
+/* ════════════ PROJECT TRACKER ════════════
+   Front end for the Gantt + Kanban tracker. Source of truth is the Cloudflare
+   D1 backed API at /api/tasks. The embedded seed below is used for first paint
+   and as an offline fallback so the board always opens fully populated. */
+
+var TRK_TODAY = '2026-06-08';
+
+var TRK_SEED = [{"id":1,"workstream":"Setup","owner":"UXR Lead","task":"Research Planning","planStartWeek":"W0","planEndWeek":"W1","dependency":null,"mandays":8,"planStart":"2026-05-06","planEnd":"2026-05-18","startDate":"2026-05-04","actualEnd":"2026-05-19","status":"Delayed","pctComplete":0.99,"daysDelayed":1,"offDays":5,"notes":"Pending Microservices list to shortlist, from data team"},{"id":2,"workstream":"Setup","owner":"UXR Lead","task":"HOS & HOD Approval on Research Plan","planStartWeek":"W1","planEndWeek":"W2","dependency":null,"mandays":7,"planStart":"2026-05-19","planEnd":"2026-06-03","startDate":"2026-05-22","actualEnd":"2026-05-26","status":"Completed Early","pctComplete":1,"daysDelayed":0,"offDays":9,"notes":""},{"id":3,"workstream":"Setup","owner":"UXR Lead, UXR Ast","task":"Resource Hunting + Material Prep","planStartWeek":"W3","planEndWeek":"W3","dependency":null,"mandays":3,"planStart":"2026-06-04","planEnd":"2026-06-08","startDate":"2026-05-27","actualEnd":"2026-06-05","status":"Completed Early","pctComplete":1,"daysDelayed":0,"offDays":2,"notes":"Faz send email to all HOU, Suvi follow-up"},{"id":4,"workstream":"Checkpoint","owner":"UXR Lead, UXR Ast","task":"Debriefing to working team + assimilation","planStartWeek":"W3","planEndWeek":"W4","dependency":null,"mandays":3,"planStart":"2026-06-09","planEnd":"2026-06-17","startDate":null,"actualEnd":null,"status":"Starts in 1 day","pctComplete":0,"daysDelayed":0,"offDays":6,"notes":""},{"id":5,"workstream":"Setup","owner":"UXR Lead","task":"Request RCM + IM Data","planStartWeek":"W4","planEndWeek":"W4","dependency":null,"mandays":3,"planStart":"2026-06-18","planEnd":"2026-06-22","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":"Pn Zanita / Pn Jamilah"},{"id":6,"workstream":"Setup","owner":"UXR Lead","task":"RCM + Data Analysis","planStartWeek":"W4","planEndWeek":"W4","dependency":4,"mandays":2,"planStart":"2026-06-18","planEnd":"2026-06-19","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":"Faizul Azhair"},{"id":7,"workstream":"Heuristics Study","owner":"UXR Ast","task":"Conduct Nielsen's 10 Usability Heuristics","planStartWeek":"W4","planEndWeek":"W5","dependency":4,"mandays":5,"planStart":"2026-06-18","planEnd":"2026-06-29","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":7,"notes":""},{"id":8,"workstream":"Heuristics Study","owner":"UXR Ast","task":"Conduct Mobile-specific usability principles","planStartWeek":"W5","planEndWeek":"W5","dependency":null,"mandays":2,"planStart":"2026-06-30","planEnd":"2026-07-01","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":"Touch targets, gestures, orientation, loading states, offline behaviour"},{"id":9,"workstream":"Heuristics Study","owner":"UXR Ast","task":"Conduct app trust & security standards","planStartWeek":"W5","planEndWeek":"W5","dependency":null,"mandays":1,"planStart":"2026-07-02","planEnd":"2026-07-02","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":"Custom checklist, error messaging, confirmations, transparency"},{"id":10,"workstream":"Heuristics Study","owner":"UXR Ast","task":"Conduct WCAG 2.1 AA accessibility compliance","planStartWeek":"W5","planEndWeek":"W5","dependency":null,"mandays":1,"planStart":"2026-07-03","planEnd":"2026-07-03","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":"Automated tools (axe, WAVE) + manual walkthrough with screen readers. Benchmark with other apps. Population affected. Special case for security: password for blind people how secure if read out"},{"id":11,"workstream":"Heuristics Study","owner":"UXR Ast/Content","task":"Conduct Content & language clarity","planStartWeek":"W6","planEndWeek":"W6","dependency":null,"mandays":2,"planStart":"2026-07-06","planEnd":"2026-07-07","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":"Tone, reading level, multi-language quality across all screens"},{"id":12,"workstream":"Heuristics Study","owner":"UXR Ast/UIUX","task":"Conduct Design consistency audit","planStartWeek":"W6","planEndWeek":"W7","dependency":null,"mandays":4,"planStart":"2026-07-08","planEnd":"2026-07-13","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":"UI patterns, spacing, typography, iconography"},{"id":13,"workstream":"Analytics Review","owner":"Data Team","task":"Conduct In-app analytics","planStartWeek":"W4","planEndWeek":"W4","dependency":4,"mandays":4,"planStart":"2026-06-18","planEnd":"2026-06-23","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":"User profile, overview"},{"id":14,"workstream":"Analytics Review","owner":"Data Team","task":"Conduct Drop-off / funnel analysis","planStartWeek":"W5","planEndWeek":"W5","dependency":null,"mandays":4,"planStart":"2026-06-29","planEnd":"2026-07-02","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":15,"workstream":"Analytics Review","owner":"Data Team","task":"Conduct App crash and error reports","planStartWeek":"W5","planEndWeek":"W6","dependency":null,"mandays":2,"planStart":"2026-07-03","planEnd":"2026-07-06","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":""},{"id":16,"workstream":"Benchmarking and Peer Study","owner":"UXR Lead","task":"Conduct Competitive Benchmarking","planStartWeek":"W4","planEndWeek":"W5","dependency":4,"mandays":7,"planStart":"2026-06-18","planEnd":"2026-07-01","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":7,"notes":"Feature comparison matrix, Visual and UI design quality, accessibility benchmarking, Information architecture, App store UX review mining, Innovation gap analysis"},{"id":17,"workstream":"Benchmarking and Peer Study","owner":"UXR Lead","task":"Build feature comparison matrix","planStartWeek":"W5","planEndWeek":"W6","dependency":null,"mandays":3,"planStart":"2026-07-02","planEnd":"2026-07-06","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":""},{"id":18,"workstream":"Field Research","owner":"UXR Ast","task":"Finalise UT Plan & Endorsement","planStartWeek":"W6","planEndWeek":"W6","dependency":17,"mandays":3,"planStart":"2026-07-07","planEnd":"2026-07-09","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":19,"workstream":"Field Research","owner":"UXR Ast","task":"Prototype and Question Readiness","planStartWeek":"W6","planEndWeek":"W8","dependency":null,"mandays":8,"planStart":"2026-07-10","planEnd":"2026-07-21","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":4,"notes":"Prototype: 8 days, Questions: 5 days"},{"id":20,"workstream":"Field Research","owner":"UXR Ast","task":"Moderator Recruitment","planStartWeek":"W8","planEndWeek":"W8","dependency":null,"mandays":3,"planStart":"2026-07-22","planEnd":"2026-07-24","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":21,"workstream":"Field Research","owner":"UXR Ast","task":"Branch Engagement + Confirmation","planStartWeek":"W6","planEndWeek":"W6","dependency":17,"mandays":3,"planStart":"2026-07-07","planEnd":"2026-07-09","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":22,"workstream":"Field Research","owner":"UXR Ast","task":"UT Materials Prep + Dry Run","planStartWeek":"W6","planEndWeek":"W7","dependency":null,"mandays":3,"planStart":"2026-07-10","planEnd":"2026-07-14","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":""},{"id":23,"workstream":"Field Research","owner":"UXR Ast","task":"UT Field day","planStartWeek":"W7","planEndWeek":"W10","dependency":null,"mandays":15,"planStart":"2026-07-15","planEnd":"2026-08-04","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":6,"notes":"Malaysia Assoc Blind"},{"id":24,"workstream":"Field Research","owner":"UXR Ast","task":"UT Report Compilation","planStartWeek":"W10","planEndWeek":"W11","dependency":null,"mandays":5,"planStart":"2026-08-05","planEnd":"2026-08-11","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":""},{"id":25,"workstream":"Analysis","owner":"UXR Lead","task":"Consolidate Findings","planStartWeek":"W11","planEndWeek":"W12","dependency":null,"mandays":5,"planStart":"2026-08-12","planEnd":"2026-08-18","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":2,"notes":""},{"id":26,"workstream":"Analysis","owner":"UXR Lead","task":"Build consolidated issue list (remove duplicates)","planStartWeek":"W12","planEndWeek":"W12","dependency":null,"mandays":1,"planStart":"2026-08-19","planEnd":"2026-08-19","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":27,"workstream":"Analysis","owner":"UXR Lead","task":"Score issues: severity x frequency x impact","planStartWeek":"W12","planEndWeek":"W12","dependency":null,"mandays":1,"planStart":"2026-08-20","planEnd":"2026-08-20","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":28,"workstream":"Analysis","owner":"UXR Lead","task":"Draft 4 to 5 user personas from research data","planStartWeek":"W12","planEndWeek":"W13","dependency":null,"mandays":2,"planStart":"2026-08-21","planEnd":"2026-08-25","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":3,"notes":""},{"id":29,"workstream":"Analysis","owner":"UXR Lead","task":"Draw current-state journey maps (top 5 flows)","planStartWeek":"W13","planEndWeek":"W13","dependency":null,"mandays":2,"planStart":"2026-08-26","planEnd":"2026-08-27","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":30,"workstream":"Recommendations","owner":"UXR Lead","task":"Build effort vs. impact matrix for all recommendations","planStartWeek":"W13","planEndWeek":"W13","dependency":null,"mandays":2,"planStart":"2026-08-28","planEnd":"2026-09-01","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":3,"notes":""},{"id":31,"workstream":"Recommendations","owner":"UXR Lead","task":"Identify 10 to 15 quick wins","planStartWeek":"W14","planEndWeek":"W14","dependency":null,"mandays":1,"planStart":"2026-09-02","planEnd":"2026-09-02","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":32,"workstream":"Recommendations","owner":"UXR Lead","task":"Identify 3 to 5 strategic initiatives","planStartWeek":"W14","planEndWeek":"W14","dependency":null,"mandays":1,"planStart":"2026-09-03","planEnd":"2026-09-03","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":33,"workstream":"Recommendations","owner":"UXR Lead","task":"Build phased 12-month implementation roadmap","planStartWeek":"W14","planEndWeek":"W14","dependency":null,"mandays":1,"planStart":"2026-09-04","planEnd":"2026-09-04","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":34,"workstream":"Recommendations","owner":"UXR Lead","task":"Slide touch up and summary","planStartWeek":"W14","planEndWeek":"W14","dependency":null,"mandays":2,"planStart":"2026-09-07","planEnd":"2026-09-08","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":35,"workstream":"Recommendations","owner":"UXR Lead","task":"Internal Sharing","planStartWeek":"W15","planEndWeek":"W15","dependency":null,"mandays":1,"planStart":"2026-09-09","planEnd":"2026-09-09","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":36,"workstream":"Reporting","owner":"UXR Lead","task":"Incorporate review feedback into final report","planStartWeek":"W15","planEndWeek":"W15","dependency":null,"mandays":1,"planStart":"2026-09-10","planEnd":"2026-09-10","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""},{"id":37,"workstream":"Reporting","owner":"UXR Lead","task":"Presentation Week","planStartWeek":"W15","planEndWeek":"W15","dependency":null,"mandays":1,"planStart":"2026-09-11","planEnd":"2026-09-11","startDate":null,"actualEnd":null,"status":"Not Started","pctComplete":0,"daysDelayed":0,"offDays":0,"notes":""}];
+var TRK_HOL = new Set(["2026-01-01","2026-01-29","2026-01-30","2026-03-20","2026-03-21","2026-03-23","2026-05-01","2026-05-08","2026-05-27","2026-05-28","2026-05-29","2026-05-31","2026-06-01","2026-06-02","2026-06-10","2026-06-11","2026-06-12","2026-06-15","2026-06-24","2026-06-25","2026-06-26","2026-08-24","2026-08-31","2026-09-16","2026-09-17","2026-09-18","2026-11-08","2026-11-09","2026-12-25"]);
+
+var TRK = [];
+var TRK_VIEW = 'gantt';
+
+var TRK_WS_ORDER = ['Setup','Checkpoint','Heuristics Study','Analytics Review','Benchmarking and Peer Study','Field Research','Analysis','Recommendations','Reporting'];
+var TRK_WS_COLOR = {
+  'Setup':'#344054','Checkpoint':'#9E5F00','Heuristics Study':'#B83010',
+  'Analytics Review':'#5E2278','Benchmarking and Peer Study':'#163060',
+  'Field Research':'#0A6B66','Analysis':'#0F6B2F','Recommendations':'#7C3D00','Reporting':'#0E7490'
+};
+function trkWsColor(ws){ return TRK_WS_COLOR[ws] || '#5C5349'; }
+
+var TRK_STATUS = {
+  'Not Started':{color:'#5C5349',light:'#EEEAE2'},
+  'In Progress':{color:'#163060',light:'#D8E5F8'},
+  'Delayed':{color:'#B83010',light:'#FDE8E2'},
+  'Completed Early':{color:'#0A6B66',light:'#D8F0EF'},
+  'Completed':{color:'#0F6B2F',light:'#D1F5DF'},
+  'Upcoming':{color:'#9E5F00',light:'#FEF3DC'}
+};
+function trkStatusMeta(s){
+  if (/^starts in/i.test(s||'')) return TRK_STATUS['Upcoming'];
+  return TRK_STATUS[s] || TRK_STATUS['Not Started'];
+}
+function trkColOf(s){ if (/^starts in/i.test(s||'')) return 'Upcoming'; return TRK_STATUS[s] ? s : 'Not Started'; }
+var TRK_COLS = ['Not Started','Upcoming','In Progress','Delayed','Completed Early','Completed'];
+var TRK_COL_LABEL = {'Upcoming':'Upcoming'};
+
+/* ── date helpers (Malaysian working days) ── */
+function trkPad(n){ return (n<10?'0':'')+n; }
+function trkISO(d){ return d.getFullYear()+'-'+trkPad(d.getMonth()+1)+'-'+trkPad(d.getDate()); }
+function trkParse(s){ return new Date(s+'T00:00:00'); }
+function trkIsWork(d){ var w=d.getDay(); if(w===0||w===6) return false; if(TRK_HOL.has(trkISO(d))) return false; return true; }
+function trkAddWork(startISO,n){ var d=trkParse(startISO); var a=0; while(a<n){ d.setDate(d.getDate()+1); if(trkIsWork(d)) a++; } return trkISO(d); }
+function trkNetwork(aISO,bISO){ var a=trkParse(aISO), b=trkParse(bISO); if(b<=a) return 0; var c=0, d=new Date(a); while(d<b){ d.setDate(d.getDate()+1); if(trkIsWork(d)) c++; } return c; }
+function trkDayDiff(aISO,bISO){ return Math.round((trkParse(bISO)-trkParse(aISO))/86400000); }
+function trkClone(o){ return JSON.parse(JSON.stringify(o)); }
+function trkEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function trkPct(t){ return Math.round((Number(t.pctComplete)||0)*100); }
+function trkBarStart(t){ return t.startDate || t.planStart; }
+
+/* ── connection indicator ── */
+function trkConn(mode){
+  var el = document.getElementById('trk-conn'), txt = document.getElementById('trk-conn-txt');
+  if(!el) return;
+  el.classList.remove('live','local');
+  if(mode==='live'){ el.classList.add('live'); txt.textContent='Live, shared with the team'; }
+  else { el.classList.add('local'); txt.textContent='Local only, changes not shared yet'; }
+}
+
+/* ── data layer (D1 backed API, seed fallback) ── */
+function trkLoad(){
+  fetch('/api/tasks', {headers:{accept:'application/json'}})
+    .then(function(r){ if(!r.ok) throw new Error('bad'); return r.json(); })
+    .then(function(data){
+      if(!Array.isArray(data)) throw new Error('shape');
+      TRK = data.length ? data : TRK_SEED.map(trkClone);
+      trkConn('live');
+      trkRenderAll();
+    })
+    .catch(function(){
+      TRK = TRK_SEED.map(trkClone);
+      trkConn('local');
+      trkRenderAll();
+    });
+}
+function trkPersist(task, isNew){
+  var url = isNew ? '/api/tasks' : '/api/tasks/'+task.id;
+  return fetch(url, {method: isNew?'POST':'PUT', headers:{'content-type':'application/json'}, body:JSON.stringify(task)})
+    .then(function(r){ if(!r.ok) throw new Error('bad'); return r.json().catch(function(){return task;}); })
+    .then(function(saved){ trkConn('live'); return saved||task; })
+    .catch(function(){ trkConn('local'); return task; });
+}
+
+/* ── view toggle ── */
+function trkSetView(v){
+  TRK_VIEW = v;
+  document.getElementById('gantt-view').classList.toggle('hidden', v!=='gantt');
+  document.getElementById('kanban-view').classList.toggle('hidden', v!=='kanban');
+  var g=document.getElementById('trk-tab-gantt'), k=document.getElementById('trk-tab-kanban');
+  g.classList.toggle('active', v==='gantt'); g.setAttribute('aria-selected', v==='gantt');
+  k.classList.toggle('active', v==='kanban'); k.setAttribute('aria-selected', v==='kanban');
+}
+
+function trkRenderAll(){ trkRenderLegend(); trkRenderGantt(); trkRenderKanban(); }
+
+/* ── legend ── */
+function trkRenderLegend(){
+  var order = ['Not Started','Upcoming','In Progress','Delayed','Completed Early','Completed'];
+  document.getElementById('trk-legend').innerHTML = order.map(function(s){
+    return '<span><i style="background:'+TRK_STATUS[s].color+'"></i>'+s+'</span>';
+  }).join('');
+}
+
+/* ── Gantt ── */
+var TRK_PXD = 18, TRK_LABELW = 230;
+function trkRenderGantt(){
+  var inner = document.getElementById('gantt-inner');
+  if(!TRK.length){ inner.innerHTML=''; return; }
+  var minISO=null, maxISO=null;
+  TRK.forEach(function(t){
+    var s=trkBarStart(t), e=t.planEnd||t.actualEnd||s;
+    if(!s) return;
+    if(minISO===null || s<minISO) minISO=s;
+    if(maxISO===null || e>maxISO) maxISO=e;
+  });
+  // pad 3 days each side
+  var min=trkParse(minISO); min.setDate(min.getDate()-3); minISO=trkISO(min);
+  var max=trkParse(maxISO); max.setDate(max.getDate()+3); maxISO=trkISO(max);
+  var totalDays = trkDayDiff(minISO,maxISO)+1;
+  var timelineW = totalDays*TRK_PXD;
+  var fullW = TRK_LABELW + timelineW;
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // header ticks
+  var ticks='';
+  var d=trkParse(minISO);
+  for(var i=0;i<totalDays;i++){
+    var left=i*TRK_PXD;
+    if(d.getDate()===1){ ticks+='<div class="gantt-tick month" style="left:'+left+'px">'+MON[d.getMonth()]+' '+d.getFullYear()+'</div>'; }
+    else if(d.getDay()===1){ ticks+='<div class="gantt-tick" style="left:'+left+'px">'+trkPad(d.getDate())+' '+MON[d.getMonth()]+'</div>'; }
+    d.setDate(d.getDate()+1);
+  }
+
+  var html='<div class="gantt-header">'+
+    '<div class="gantt-corner" style="width:'+TRK_LABELW+'px">Deliverable</div>'+
+    '<div class="gantt-ticks" style="width:'+timelineW+'px">'+ticks+'</div>'+
+    '</div><div class="gantt-body" style="position:relative;width:'+fullW+'px">';
+
+  TRK_WS_ORDER.concat(['__other__']).forEach(function(ws){
+    var rows = TRK.filter(function(t){ return ws==='__other__' ? TRK_WS_ORDER.indexOf(t.workstream)===-1 : t.workstream===ws; });
+    if(!rows.length) return;
+    rows.sort(function(a,b){ return (trkBarStart(a)||'').localeCompare(trkBarStart(b)||''); });
+    var wsName = ws==='__other__' ? 'Other' : ws;
+    var wsc = trkWsColor(ws==='__other__'?'':wsName);
+    html+='<div class="gantt-grp-row"><div class="gantt-grp-label" style="width:'+TRK_LABELW+'px;color:'+wsc+'">'+trkEsc(wsName)+'</div><div class="gantt-grp-track" style="width:'+timelineW+'px"></div></div>';
+    rows.forEach(function(t){
+      var s=trkBarStart(t), e=t.planEnd||s;
+      if(!s){ return; }
+      var left=trkDayDiff(minISO,s)*TRK_PXD;
+      var w=Math.max((trkDayDiff(s,e)+1)*TRK_PXD, 14);
+      var meta=trkStatusMeta(t.status);
+      var pct=trkPct(t);
+      html+='<div class="gantt-row">'+
+        '<div class="gantt-label" style="width:'+TRK_LABELW+'px"><b>'+trkEsc(t.task)+'</b><small>'+trkEsc(t.owner)+'</small></div>'+
+        '<div class="gantt-track" style="width:'+timelineW+'px">'+
+          '<div class="gantt-bar" style="left:'+left+'px;width:'+w+'px;background:'+meta.color+'" '+
+            'tabindex="0" role="button" data-id="'+t.id+'" '+
+            'onmouseenter="trkTip(event,'+t.id+')" onmousemove="trkTipMove(event)" onmouseleave="trkTipHide()" '+
+            'onfocus="trkTip(event,'+t.id+')" onblur="trkTipHide()">'+
+            '<div class="fill" style="width:'+pct+'%"></div><span>'+pct+'%</span>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    });
+  });
+
+  // today marker
+  var todayLeft = TRK_LABELW + trkDayDiff(minISO,TRK_TODAY)*TRK_PXD;
+  html+='<div class="gantt-today" style="left:'+todayLeft+'px"></div>';
+  html+='</div>';
+  inner.style.width=fullW+'px';
+  inner.innerHTML=html;
+}
+
+/* ── Gantt tooltip ── */
+function trkTipEl(){
+  var el=document.getElementById('gantt-tip');
+  if(!el){ el=document.createElement('div'); el.id='gantt-tip'; el.className='gantt-tip'; document.body.appendChild(el); }
+  return el;
+}
+function trkFind(id){ for(var i=0;i<TRK.length;i++){ if(String(TRK[i].id)===String(id)) return TRK[i]; } return null; }
+function trkTip(e,id){
+  var t=trkFind(id); if(!t) return;
+  var el=trkTipEl();
+  var dep = t.dependency ? ('Task #'+t.dependency) : 'None';
+  var notes = t.notes ? t.notes : 'None';
+  el.innerHTML='<b>'+trkEsc(t.task)+'</b>'+
+    '<div class="row"><em>Status</em><span>'+trkEsc(t.status)+', '+trkPct(t)+'% done</span></div>'+
+    '<div class="row"><em>Owner</em><span>'+trkEsc(t.owner)+'</span></div>'+
+    '<div class="row"><em>Workstream</em><span>'+trkEsc(t.workstream)+'</span></div>'+
+    '<div class="row"><em>Dates</em><span>'+trkEsc(trkBarStart(t))+' to '+trkEsc(t.planEnd||'?')+'</span></div>'+
+    '<div class="row"><em>Mandays</em><span>'+trkEsc(t.mandays)+'</span></div>'+
+    '<div class="row"><em>Dependency</em><span>'+trkEsc(dep)+'</span></div>'+
+    '<div class="row"><em>Notes</em><span>'+trkEsc(notes)+'</span></div>';
+  el.classList.add('show');
+  trkTipMove(e);
+}
+function trkTipMove(e){
+  var el=document.getElementById('gantt-tip'); if(!el) return;
+  var x=e.clientX+14, y=e.clientY+14;
+  if(x+290>window.innerWidth) x=e.clientX-294;
+  if(y+200>window.innerHeight) y=window.innerHeight-210;
+  el.style.left=x+'px'; el.style.top=y+'px';
+}
+function trkTipHide(){ var el=document.getElementById('gantt-tip'); if(el) el.classList.remove('show'); }
+
+/* ── Kanban ── */
+function trkRenderKanban(){
+  var board=document.getElementById('kanban-board');
+  var html='';
+  TRK_COLS.forEach(function(col){
+    var items=TRK.filter(function(t){ return trkColOf(t.status)===col; });
+    var meta=TRK_STATUS[col];
+    html+='<div class="kan-col">'+
+      '<div class="kan-col-hd" style="background:'+meta.color+'">'+trkEsc(col)+'<span class="count">'+items.length+'</span></div>'+
+      '<div class="kan-list" data-col="'+trkEsc(col)+'" ondragover="trkDragOver(event)" ondragleave="trkDragLeave(event)" ondrop="trkDrop(event)">'+
+        items.map(trkCardHtml).join('')+
+      '</div></div>';
+  });
+  board.innerHTML=html;
+}
+function trkCardHtml(t){
+  var wsc=trkWsColor(t.workstream);
+  var meta=trkStatusMeta(t.status);
+  var pct=trkPct(t);
+  var dep = t.dependency ? '<span>&#128279; #'+t.dependency+'</span>' : '';
+  return '<div class="kan-card" draggable="true" data-id="'+t.id+'" ondragstart="trkDragStart(event)" ondragend="trkDragEnd(event)">'+
+    '<span class="ws" style="background:'+wsc+'1A;color:'+wsc+'">'+trkEsc(t.workstream)+'</span>'+
+    '<div class="ttl">'+trkEsc(t.task)+'</div>'+
+    '<div class="meta"><span>&#128100; '+trkEsc(t.owner)+'</span><span>&#9201; '+trkEsc(t.mandays)+'d</span>'+dep+'</div>'+
+    '<div class="pcbar"><i style="width:'+pct+'%;background:'+meta.color+'"></i></div>'+
+  '</div>';
+}
+
+/* ── Kanban drag and drop ── */
+var TRK_DRAG=null;
+function trkDragStart(e){ TRK_DRAG=e.target.dataset.id; e.target.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; e.dataTransfer.setData('text/plain',TRK_DRAG); }
+function trkDragEnd(e){ e.target.classList.remove('dragging'); TRK_DRAG=null; document.querySelectorAll('.kan-list.drag-over').forEach(function(l){l.classList.remove('drag-over');}); }
+function trkDragOver(e){ e.preventDefault(); e.dataTransfer.dropEffect='move'; e.currentTarget.classList.add('drag-over'); }
+function trkDragLeave(e){ if(e.currentTarget===e.target) e.currentTarget.classList.remove('drag-over'); }
+function trkDrop(e){
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  var id = TRK_DRAG || e.dataTransfer.getData('text/plain');
+  var col = e.currentTarget.dataset.col;
+  var t = trkFind(id);
+  if(!t) return;
+  if(trkColOf(t.status)===col) return;
+  trkApplyStatus(t, col);
+  trkRenderAll();
+  trkPersist(t, false);
+}
+function trkApplyStatus(t, col){
+  if(col==='Upcoming'){
+    var start=trkBarStart(t);
+    if(start && start>TRK_TODAY){ var n=trkNetwork(TRK_TODAY,start); t.status='Starts in '+n+(n===1?' day':' days'); }
+    else t.status='Not Started';
+    t.pctComplete=0;
+  } else {
+    t.status=col;
+    if(col==='Completed' || col==='Completed Early'){ t.pctComplete=1; if(!t.actualEnd) t.actualEnd=TRK_TODAY; }
+    else if(col==='Not Started'){ t.pctComplete=0; }
+    else if(col==='In Progress' && (Number(t.pctComplete)||0)>=1){ t.pctComplete=0.5; }
+  }
+}
+
+/* ── Add deliverable form ── */
+function trkOpenForm(){
+  var ds=document.getElementById('f-workstream-list');
+  ds.innerHTML=TRK_WS_ORDER.map(function(w){ return '<option value="'+trkEsc(w)+'">'; }).join('');
+  document.getElementById('trk-form').reset();
+  document.getElementById('f-start').value=TRK_TODAY;
+  document.getElementById('f-mandays').value=1;
+  document.getElementById('trk-form-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){ document.getElementById('f-task').focus(); },100);
+}
+function trkCloseForm(){
+  var ov=document.getElementById('trk-form-overlay');
+  if(!ov) return;
+  ov.classList.remove('open');
+  document.body.style.overflow='';
+}
+function trkSubmitForm(e){
+  e.preventDefault();
+  var start=document.getElementById('f-start').value;
+  var mandays=Math.max(1, parseInt(document.getElementById('f-mandays').value,10)||1);
+  var depVal=document.getElementById('f-dependency').value;
+  var status=document.getElementById('f-status').value;
+  var maxId=0; TRK.forEach(function(t){ if(Number(t.id)>maxId) maxId=Number(t.id); });
+  var planEnd=trkAddWork(start, mandays-1);
+  // upcoming auto label if start is in the future and left as Not Started
+  if(status==='Not Started' && start>TRK_TODAY){ var n=trkNetwork(TRK_TODAY,start); status='Starts in '+n+(n===1?' day':' days'); }
+  var t={
+    id:maxId+1,
+    workstream:document.getElementById('f-workstream').value.trim(),
+    owner:document.getElementById('f-owner').value.trim(),
+    task:document.getElementById('f-task').value.trim(),
+    planStartWeek:null, planEndWeek:null,
+    dependency: depVal?parseInt(depVal,10):null,
+    mandays:mandays,
+    planStart:start, planEnd:planEnd,
+    startDate: start<=TRK_TODAY ? start : null,
+    actualEnd: (status==='Completed'||status==='Completed Early') ? TRK_TODAY : null,
+    status:status,
+    pctComplete: (status==='Completed'||status==='Completed Early')?1:0,
+    daysDelayed:0, offDays:0,
+    notes:document.getElementById('f-notes').value.trim()
+  };
+  TRK.push(t);
+  trkRenderAll();
+  trkCloseForm();
+  trkPersist(t, true).then(function(saved){
+    if(saved && saved.id && String(saved.id)!==String(t.id)){ t.id=saved.id; trkRenderAll(); }
+  });
+}
+document.getElementById('trk-form-overlay').addEventListener('click', function(e){ if(e.target===this) trkCloseForm(); });
+
+/* ── init ── */
+trkSetView('gantt');
+trkLoad();
 </script>
 </body>
 </html>
