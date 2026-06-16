@@ -289,6 +289,30 @@ button:focus:not(:focus-visible){outline:none}
 }
 .mobile-nav{display:none}
 
+/* ════ FUNNEL RANKING LEADERBOARD (Analytics) ════ */
+.fr-panel{margin:0 40px 6px;border:2px solid var(--ink);border-radius:14px;overflow:hidden;background:#fff}
+.fr-head{background:#5E2278;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fr-head-l{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fr-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 11px;border-radius:30px}
+.fr-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:#F5A08A;display:inline-block}
+.fr-title{color:#fff;font-size:18px;font-weight:700}
+.fr-toggle{display:inline-flex;background:rgba(255,255,255,.16);border-radius:10px;padding:3px;gap:3px}
+.fr-toggle button{background:transparent;border:none;color:#fff;font-family:Arial,sans-serif;font-size:13px;font-weight:700;padding:8px 18px;border-radius:8px;cursor:pointer;min-height:40px;transition:background .15s,color .15s}
+.fr-toggle button.active{background:#fff;color:#5E2278}
+.fr-toggle button:not(.active):hover{background:rgba(255,255,255,.12)}
+.fr-list{padding:14px;display:flex;flex-direction:column;gap:10px;background:#F4F1FA}
+.fr-row{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:11px;padding:13px 16px}
+.fr-rank{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:#5E2278;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.fr-rank.top{background:#9E5F00}
+.fr-main{flex:1;min-width:0}
+.fr-barwrap{height:9px;background:#E4DCF1;border-radius:6px;overflow:hidden;margin-bottom:7px}
+.fr-bar{height:100%;background:#5E2278;border-radius:6px;transition:width .35s ease}
+.fr-meta{font-size:12px;color:#5C5349;line-height:1.4}
+.fr-meta b{color:#1A1612;font-weight:700}
+.fr-val{flex-shrink:0;font-size:22px;font-weight:700;color:#5E2278;min-width:104px;text-align:right;white-space:nowrap}
+.fr-cap{font-size:11px;color:var(--muted);margin:8px 40px 0;font-style:italic}
+@media(max-width:768px){.fr-panel,.fr-cap{margin-left:16px;margin-right:16px}.fr-row{padding:11px 12px;gap:10px}.fr-val{font-size:17px;min-width:74px}.fr-title{font-size:16px}}
+
 /* ════ PROJECT TRACKER ════ */
 :root{--track:#0E7490;--track-l:#D6EEF5}
 .trk-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 40px 18px}
@@ -674,6 +698,101 @@ button:focus:not(:focus-visible){outline:none}
 
   </div>
   <div class="ig-panel"><div class="ig-title">Analytics Funnel, Where Members Drop Off</div><div class="ig-body"><div class="funnel-wrap"><div class="f-step"><div class="f-bar" style="height:80px;background:#5E2278"><span class="f-pct">100%</span></div><div class="f-lbl">Start</div></div><div class="f-arrow">&#9654;</div><div class="f-step"><div class="f-bar" style="height:58px;background:#5E227888"><span class="f-pct">~72%</span></div><div class="f-lbl">Step 2</div></div><div class="f-arrow">&#9654;</div><div class="f-step"><div class="f-bar" style="height:42px;background:#5E227888"><span class="f-pct">~52%</span></div><div class="f-lbl">Step 3</div></div><div class="f-arrow">&#9654;</div><div class="f-step"><div class="f-bar" style="height:24px;background:#B83010"><span class="f-pct">&#9888; Drop</span></div><div class="f-lbl">Bottleneck</div></div><div class="f-arrow">&#9654;</div><div class="f-step"><div class="f-bar" style="height:50px;background:#5E2278"><span class="f-pct">Goal</span></div><div class="f-lbl">Complete</div></div></div><div class="metrics-row"><div class="m-chip" style="background:#EFE0FA"><div class="m-name">MAU by Journey</div><div class="m-val" style="color:#5E2278;font-size:15px">New + Returning</div><div class="m-desc">Active users split per journey, volume + friction = priority</div></div><div class="m-chip" style="background:#EFE0FA"><div class="m-name">Drop-off Target</div><div class="m-val" style="color:#5E2278">&lt;15%</div><div class="m-desc">On critical flows</div></div><div class="m-chip" style="background:#EFE0FA"><div class="m-name">Primary Tool</div><div class="m-val" style="color:#5E2278;font-size:15px">GA4</div><div class="m-desc">Event-based tracking</div></div></div></div></div>
+  <div class="fr-panel">
+    <div class="fr-head">
+      <div class="fr-head-l">
+        <span class="fr-eyebrow">Leaderboard</span>
+        <span class="fr-title">Funnel ranking</span>
+      </div>
+      <div class="fr-toggle" role="group" aria-label="Rank journeys by">
+        <button id="fr-tab-conv" class="active" aria-pressed="true" onclick="setFunnelView('conversion')">Conversion</button>
+        <button id="fr-tab-vol" aria-pressed="false" onclick="setFunnelView('volume')">Volume</button>
+      </div>
+    </div>
+    <div class="fr-list" id="fr-list">
+      <div class="fr-row" data-entered="204880" data-completed="191230">
+        <div class="fr-rank top">1</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:93.3%"></div></div>
+          <div class="fr-meta"><b>204,880</b> entered &middot; <b>191,230</b> completed &middot; Notifications &amp; Alerts</div>
+        </div>
+        <div class="fr-val">93.3%</div>
+      </div>
+      <div class="fr-row" data-entered="892430" data-completed="793640">
+        <div class="fr-rank">2</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:88.9%"></div></div>
+          <div class="fr-meta"><b>892,430</b> entered &middot; <b>793,640</b> completed &middot; Balance &amp; Statement View</div>
+        </div>
+        <div class="fr-val">88.9%</div>
+      </div>
+      <div class="fr-row" data-entered="31038" data-completed="25659">
+        <div class="fr-rank">3</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:82.7%"></div></div>
+          <div class="fr-meta"><b>31,038</b> entered &middot; <b>25,659</b> completed &middot; i-Saraan / i-Simpanan</div>
+        </div>
+        <div class="fr-val">82.7%</div>
+      </div>
+      <div class="fr-row" data-entered="96540" data-completed="78320">
+        <div class="fr-rank">4</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:81.1%"></div></div>
+          <div class="fr-meta"><b>96,540</b> entered &middot; <b>78,320</b> completed &middot; Profile Management</div>
+        </div>
+        <div class="fr-val">81.1%</div>
+      </div>
+      <div class="fr-row" data-entered="1427740" data-completed="1154158">
+        <div class="fr-rank">5</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:80.8%"></div></div>
+          <div class="fr-meta"><b>1,427,740</b> entered &middot; <b>1,154,158</b> completed &middot; Account Dashboard</div>
+        </div>
+        <div class="fr-val">80.8%</div>
+      </div>
+      <div class="fr-row" data-entered="671558" data-completed="480249">
+        <div class="fr-rank">6</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:71.5%"></div></div>
+          <div class="fr-meta"><b>671,558</b> entered &middot; <b>480,249</b> completed &middot; Onboarding &amp; Login</div>
+        </div>
+        <div class="fr-val">71.5%</div>
+      </div>
+      <div class="fr-row" data-entered="142300" data-completed="98760">
+        <div class="fr-rank">7</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:69.4%"></div></div>
+          <div class="fr-meta"><b>142,300</b> entered &middot; <b>98,760</b> completed &middot; Retirement Calculator</div>
+        </div>
+        <div class="fr-val">69.4%</div>
+      </div>
+      <div class="fr-row" data-entered="58210" data-completed="28640">
+        <div class="fr-rank">8</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:49.2%"></div></div>
+          <div class="fr-meta"><b>58,210</b> entered &middot; <b>28,640</b> completed &middot; i-Invest</div>
+        </div>
+        <div class="fr-val">49.2%</div>
+      </div>
+      <div class="fr-row" data-entered="48970" data-completed="22410">
+        <div class="fr-rank">9</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:45.8%"></div></div>
+          <div class="fr-meta"><b>48,970</b> entered &middot; <b>22,410</b> completed &middot; Help &amp; Support</div>
+        </div>
+        <div class="fr-val">45.8%</div>
+      </div>
+      <div class="fr-row" data-entered="7871" data-completed="3108">
+        <div class="fr-rank">10</div>
+        <div class="fr-main">
+          <div class="fr-barwrap"><div class="fr-bar" style="width:39.5%"></div></div>
+          <div class="fr-meta"><b>7,871</b> entered &middot; <b>3,108</b> completed &middot; Withdrawal Application</div>
+        </div>
+        <div class="fr-val">39.5%</div>
+      </div>
+    </div>
+  </div>
+  <div class="fr-cap">Illustrative sample data to show how funnel ranking works. Replace with the GA4 export per journey. Conversion ranks by completion rate, Volume ranks by how many members entered.</div>
   <div class="cards-wrap">
     <div class="cards-lbl" style="color:#5E2278">Core Method</div>
 <button class="pc" data-term="Analytics Review" onclick="openModal('Analytics Review')">
@@ -2294,6 +2413,49 @@ document.getElementById('trk-form-overlay').addEventListener('click', function(e
 /* ── init ── */
 trkSetView('gantt');
 trkLoad();
+</script>
+
+<script>
+/* ════ FUNNEL RANKING LEADERBOARD ════
+   Static-first: rows are pre-rendered in conversion order. JS only re-sorts the
+   existing rows and updates rank, bar, and value when the metric toggles. */
+var FR_VIEW = 'conversion';
+function frFmt(n){ return Number(n).toLocaleString('en-US'); }
+function setFunnelView(v){
+  FR_VIEW = v;
+  var c = document.getElementById('fr-tab-conv'), o = document.getElementById('fr-tab-vol');
+  c.classList.toggle('active', v === 'conversion'); c.setAttribute('aria-pressed', v === 'conversion');
+  o.classList.toggle('active', v === 'volume'); o.setAttribute('aria-pressed', v === 'volume');
+  frRender();
+}
+function frRender(){
+  var list = document.getElementById('fr-list');
+  if(!list) return;
+  var rows = Array.prototype.slice.call(list.querySelectorAll('.fr-row'));
+  var maxEntered = Math.max.apply(null, rows.map(function(r){ return +r.dataset.entered; }));
+  rows.sort(function(a, b){
+    if(FR_VIEW === 'conversion'){
+      return (b.dataset.completed / b.dataset.entered) - (a.dataset.completed / a.dataset.entered);
+    }
+    return (+b.dataset.entered) - (+a.dataset.entered);
+  });
+  rows.forEach(function(r, i){
+    list.appendChild(r);
+    var rank = r.querySelector('.fr-rank');
+    rank.textContent = i + 1;
+    rank.classList.toggle('top', i === 0);
+    var entered = +r.dataset.entered, completed = +r.dataset.completed, conv = completed / entered;
+    var bar = r.querySelector('.fr-bar'), val = r.querySelector('.fr-val');
+    if(FR_VIEW === 'conversion'){
+      bar.style.width = (conv * 100).toFixed(1) + '%';
+      val.textContent = (conv * 100).toFixed(1) + '%';
+    } else {
+      bar.style.width = (entered / maxEntered * 100).toFixed(1) + '%';
+      val.textContent = frFmt(entered);
+    }
+  });
+}
+frRender();
 </script>
 </body>
 </html>
